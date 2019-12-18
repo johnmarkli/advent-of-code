@@ -23,7 +23,24 @@ func TestClosestIntersectionDist(t *testing.T) {
 	assert.Equal(t, d, 135)
 }
 
+func TestInterssectionLeastSteps(t *testing.T) {
+	line1Str := "R75,D30,R83,U83,L12,D49,R71,U7,L72"
+	line2Str := "U62,R66,U55,R34,D71,R55,D58,R83"
+	line1 := strings.Split(line1Str, ",")
+	line2 := strings.Split(line2Str, ",")
+	s := intersectionLeastSteps(line1, line2)
+	assert.Equal(t, s, 610)
+}
+
 func TestManhattanDistance(t *testing.T) {
 	d := manhattanDistance(point{0, 0}, point{6, 6})
 	assert.Equal(t, d, 12)
+}
+
+func TestNumSteps(t *testing.T) {
+	lineStr := "R75,D30,R83,U83,L12,D49,R71,U7,L72"
+	lineArr := strings.Split(lineStr, ",")
+	p := point{75, -30}
+	s := numSteps(lineArr, p)
+	assert.Equal(t, s, 105)
 }

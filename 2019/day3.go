@@ -37,6 +37,29 @@ func day3() {
 	fmt.Println("Day 3 Part 1 Answer: ", result)
 }
 
+func intersectionLeastSteps(line1 []string, line2 []string) int {
+	l1 := buildLine(line1)
+	l2 := buildLine(line2)
+	_ = findIntersections(l1, l2)
+	return 0
+}
+
+func numSteps(lineSteps []string, intersection point) int {
+	for _, move := range lineSteps {
+		dir := string(move[0])
+		_, _ = strconv.Atoi(string(move[1:]))
+		switch dir {
+		case "U":
+		case "D":
+		case "L":
+		case "R":
+		default:
+			fmt.Println("Invalid line")
+		}
+	}
+	return 0
+}
+
 func closestIntersectionDist(line1 []string, line2 []string) int {
 	l1 := buildLine(line1)
 	l2 := buildLine(line2)
