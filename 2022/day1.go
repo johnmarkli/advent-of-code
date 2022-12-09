@@ -66,18 +66,15 @@ import (
 	"fmt"
 	"math"
 	"os"
+	"sort"
 	"strconv"
 )
 
-func main() {
-  fmt.Println(Day1("testdata/day1"))
-}
-
-func Day1(filepath string) int {
+func Day1Part1(filepath string) int {
 	// create array of elves of ints
 	elfCals := []int{}
-  // init first elf
-  elfCals = append(elfCals, 0)
+	// init first elf
+	elfCals = append(elfCals, 0)
 	// init elf num - 0 if 1st elf
 	elfNum := 0
 	// init max
@@ -99,7 +96,7 @@ func Day1(filepath string) int {
 		// if empty line, inc elf num
 		if err != nil {
 			elfNum++
-      elfCals = append(elfCals, 0)
+			elfCals = append(elfCals, 0)
 		} else {
 			// else add num to array of elves at elf num
 			elfCals[elfNum] += cals
@@ -115,4 +112,58 @@ func Day1(filepath string) int {
 
 	// return max
 	return maxCals
+}
+
+/*
+By the time you calculate the answer to the Elves' question, they've already
+realized that the Elf carrying the most Calories of food might eventually run
+out of snacks.
+
+To avoid this unacceptable situation, the Elves would instead like to know the
+total Calories carried by the top three Elves carrying the most Calories. That
+way, even if one of those Elves runs out of snacks, they still have two
+backups.
+
+In the example above, the top three Elves are the fourth Elf (with 24000
+Calories), then the third Elf (with 11000 Calories), then the fifth Elf (with
+10000 Calories). The sum of the Calories carried by these three elves is 45000.
+
+Find the top three Elves carrying the most Calories. How many Calories are
+those Elves carrying in total?
+*/
+func Day1Part2(filepath string) int {
+	// create array of elves of ints with first elf init
+	elfCals := []int{0}
+	elfNum := 0
+
+	// read file line by line
+	readFile, err := os.Open(filepath)
+	if err != nil {
+		panic(err)
+	}
+
+	fileScanner := bufio.NewScanner(readFile)
+	fileScanner.Split(bufio.ScanLines)
+	for fileScanner.Scan() {
+		cals, err := strconv.Atoi(fileScanner.Text())
+		// if empty line, inc elf num
+		if err != nil {
+			elfNum++
+			elfCals = append(elfCals, 0)
+		} else {
+			// else add num to array of elves at elf num
+			elfCals[elfNum] += cals
+		}
+	}
+
+	sort.Ints(elfCals)
+
+	// sum cals in top 3
+	sum := 0
+	for i := len(elfCals) - 1; i >= len(elfCals)-3; i-- {
+		sum += elfCals[i]
+	}
+
+	// return sum
+	return sum
 }
