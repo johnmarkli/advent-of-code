@@ -55,7 +55,7 @@ priority of the item type that appears in both compartments of each rucksack is
 Find the item type that appears in both compartments of each rucksack. What is
 the sum of the priorities of those item types?
 */
-func Day3Part1(filepath string) int {
+func Day3Part1(filepath string) any {
 	// init sum
 	sum := 0
 	// read line by line
@@ -144,10 +144,8 @@ the second group. The sum of these is 70.
 
 Find the item type that corresponds to the badges of each three-Elf group. What
 is the sum of the priorities of those item types?
-
-
 */
-func Day3Part2(filepath string) int {
+func Day3Part2(filepath string) any {
 	// find common letter between group of 3 lines
 	// create seen maps for bags 1 and 2
 	// loop bag 3 to see if in bag1 and bag2

@@ -54,7 +54,7 @@ follow the strategy guide, you would get a total score of 15 (8 + 1 + 6).
 
 What would your total score be if everything goes exactly according to your strategy guide?
 */
-func Day2Part1(filepath string) int {
+func Day2Part1(filepath string) any {
 	// A, X - Rock
 	// B, Y - Paper
 	// C, Z - Scissors
@@ -127,7 +127,7 @@ a total score of 12.
 Following the Elf's instructions for the second column, what would your total
 score be if everything goes exactly according to your strategy guide?
 */
-func Day2Part2(filepath string) int {
+func Day2Part2(filepath string) any {
 	// A - Rock - 1
 	// B - Paper - 2
 	// C - Scissors - 3

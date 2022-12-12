@@ -1,3 +1,14 @@
+package main
+
+import (
+	"bufio"
+	"fmt"
+	"math"
+	"os"
+	"sort"
+	"strconv"
+)
+
 /*
 --- Day 1: Calorie Counting ---
 Santa's reindeer typically eat regular reindeer food, but they need a lot of
@@ -59,18 +70,7 @@ Find the Elf carrying the most Calories. How many total Calories is that Elf
 carrying?
 */
 
-package main
-
-import (
-	"bufio"
-	"fmt"
-	"math"
-	"os"
-	"sort"
-	"strconv"
-)
-
-func Day1Part1(filepath string) int {
+func Day1Part1(filepath string) any {
 	// create array of elves of ints
 	elfCals := []int{}
 	// init first elf
@@ -131,7 +131,7 @@ Calories), then the third Elf (with 11000 Calories), then the fifth Elf (with
 Find the top three Elves carrying the most Calories. How many Calories are
 those Elves carrying in total?
 */
-func Day1Part2(filepath string) int {
+func Day1Part2(filepath string) any {
 	// create array of elves of ints with first elf init
 	elfCals := []int{0}
 	elfNum := 0
