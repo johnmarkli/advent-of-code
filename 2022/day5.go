@@ -224,45 +224,52 @@ and move multiple crates at once.
 Again considering the example above, the crates begin in the same
 configuration:
 
-    [D]
+	[D]
+
 [N] [C]
 [Z] [M] [P]
- 1   2   3
+
+	1   2   3
 
 Moving a single crate from stack 2 to stack 1 behaves the same as before:
 
 [D]
 [N] [C]
 [Z] [M] [P]
- 1   2   3
+
+	1   2   3
 
 However, the action of moving three crates from stack 1 to stack 3 means that
 those three moved crates stay in the same order, resulting in this new
 configuration:
 
-        [D]
-        [N]
-    [C] [Z]
-    [M] [P]
- 1   2   3
+	       [D]
+	       [N]
+	   [C] [Z]
+	   [M] [P]
+	1   2   3
 
 Next, as both crates are moved from stack 2 to stack 1, they retain their order
 as well:
 
-        [D]
-        [N]
+	[D]
+	[N]
+
 [C]     [Z]
 [M]     [P]
- 1   2   3
+
+	1   2   3
 
 Finally, a single crate is still moved from stack 1 to stack 2, but now it's
 crate C that gets moved:
 
-        [D]
-        [N]
-        [Z]
+	[D]
+	[N]
+	[Z]
+
 [M] [C] [P]
- 1   2   3
+
+	1   2   3
 
 In this example, the CrateMover 9001 has put the crates in a totally different
 order: MCD.

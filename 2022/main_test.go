@@ -30,3 +30,17 @@ func TestDay5(t *testing.T) {
 	require.Equal(t, "CMZ", Day5Part1("testdata/day5_example"))
 	require.Equal(t, "MCD", Day5Part2("testdata/day5_example"))
 }
+
+func TestDay6(t *testing.T) {
+	require.Equal(t, 7, Day6Part1("testdata/day6_ex1"))
+	require.Equal(t, 5, Day6Part1("testdata/day6_ex2"))
+	require.Equal(t, 6, Day6Part1("testdata/day6_ex3"))
+	require.Equal(t, 10, Day6Part1("testdata/day6_ex4"))
+	require.Equal(t, 11, Day6Part1("testdata/day6_ex5"))
+
+	require.Equal(t, 19, Day6Part2("testdata/day6_ex1"))
+	require.Equal(t, 23, Day6Part2("testdata/day6_ex2"))
+	require.Equal(t, 23, Day6Part2("testdata/day6_ex3"))
+	require.Equal(t, 29, Day6Part2("testdata/day6_ex4"))
+	require.Equal(t, 26, Day6Part2("testdata/day6_ex5"))
+}
