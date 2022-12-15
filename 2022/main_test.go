@@ -49,3 +49,8 @@ func TestDay7(t *testing.T) {
 	require.Equal(t, 95437, Day7Part1("testdata/day7_ex"))
 	require.Equal(t, 24933642, Day7Part2("testdata/day7_ex"))
 }
+
+func TestDay8(t *testing.T) {
+	require.Equal(t, 21, Day8Part1("testdata/day8_ex"))
+	require.Equal(t, 8, Day8Part2("testdata/day8_ex"))
+}
