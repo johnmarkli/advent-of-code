@@ -80,6 +80,8 @@ func parseMap(fileScanner *bufio.Scanner) [][]int {
 33549
 35390
 */
+
+// Day8Part1 ...
 func Day8Part1(filepath string) any {
 	var res int
 
@@ -216,6 +218,8 @@ tree house.
 Consider each tree on your map. What is the highest scenic score possible for
 any tree?
 */
+
+// Day8Part2 ...
 func Day8Part2(filepath string) any {
 	var res int
 

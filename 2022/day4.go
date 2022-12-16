@@ -71,6 +71,7 @@ type assignedRange struct {
 	high int
 }
 
+// Day4Part1 ...
 func Day4Part1(filepath string) any {
 	// find pairs where one is fully covered by the other and find the count
 	count := 0
@@ -90,7 +91,7 @@ func Day4Part1(filepath string) any {
 		// test if range pair is covered
 		if covered(firstRange, secondRange) {
 			// add to count if covered
-			count += 1
+			count++
 		}
 	}
 
@@ -127,6 +128,8 @@ So, in this example, the number of overlapping assignment pairs is 4.
 
 In how many assignment pairs do the ranges overlap?
 */
+
+// Day4Part2 ...
 func Day4Part2(filepath string) any {
 	// find pairs where there is any overlap and add to count
 	count := 0
@@ -146,7 +149,7 @@ func Day4Part2(filepath string) any {
 		// test if range pair is covered
 		if overlap(firstRange, secondRange) {
 			// add to count if covered
-			count += 1
+			count++
 		}
 	}
 

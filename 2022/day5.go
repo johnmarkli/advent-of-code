@@ -173,6 +173,7 @@ func getTops(stacks []stack) string {
 	return res
 }
 
+// Day5Part1 ...
 func Day5Part1(filepath string) any {
 	readFile, _ := os.Open(filepath)
 
@@ -279,6 +280,8 @@ Elves know where they should stand to be ready to unload the final supplies.
 After the rearrangement procedure completes, what crate ends up on top of each
 stack?
 */
+
+// Day5Part2 ...
 func Day5Part2(filepath string) any {
 	readFile, _ := os.Open(filepath)
 

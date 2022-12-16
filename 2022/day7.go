@@ -212,6 +212,7 @@ func parseFileSystem(fileScanner *bufio.Scanner) fileSystem {
 	return fs
 }
 
+// Day7Part1 ...
 func Day7Part1(filepath string) any {
 	var res int
 
@@ -271,6 +272,8 @@ the smallest: d, increasing unused space by 24933642.
 Find the smallest directory that, if deleted, would free up enough space on the
 filesystem to run the update. What is the total size of that directory?
 */
+
+// Day7Part2 ...
 func Day7Part2(filepath string) any {
 	res := math.MaxInt
 	totalSpace := 70000000

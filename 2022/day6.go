@@ -60,6 +60,8 @@ zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw: first marker after character 11
 How many characters need to be processed before the first start-of-packet
 marker is detected?
 */
+
+// Day6Part1 ...
 func Day6Part1(filepath string) any {
 	var res int
 
@@ -97,6 +99,8 @@ zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw: first marker after character 26
 How many characters need to be processed before the first start-of-message
 marker is detected?
 */
+
+// Day6Part2 ...
 func Day6Part2(filepath string) any {
 	var res int
 
@@ -123,7 +127,7 @@ func firstUniqueWindow(code string, winSize int) int {
 	// while r is less than length of line and (r-l)+1 is <= 4
 	for r < len(code) {
 		// put char at r in seen hash
-		seen[string(code[r])] += 1
+		seen[string(code[r])]++
 
 		curSize := (r - l) + 1
 
@@ -135,7 +139,7 @@ func firstUniqueWindow(code string, winSize int) int {
 			}
 
 			// remove char at l from seen hash
-			seen[string(code[l])] -= 1
+			seen[string(code[l])]--
 			if seen[string(code[l])] == 0 {
 				delKey := string(code[l])
 				delete(seen, delKey)
