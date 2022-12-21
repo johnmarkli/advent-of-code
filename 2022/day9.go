@@ -285,7 +285,7 @@ type pos struct {
 	y int
 }
 
-func (p *pos) moveTail(head *pos) {
+func (p *pos) moveNext(head *pos) {
 	// T must move to be adjacent to H
 	// no need to move if diff between axes is <= 1
 	if int(math.Abs(float64(head.x-p.x))) > 1 || int(math.Abs(float64(head.y-p.y))) > 1 {
@@ -310,11 +310,14 @@ func (p *pos) moveTail(head *pos) {
 		// on y axis if abs(H.y - T.y) > 1 move T.y towards H.y
 		if head.x-p.x > 1 {
 			p.x++
-		} else if p.x-head.x > 1 {
+		}
+		if p.x-head.x > 1 {
 			p.x--
-		} else if head.y-p.y > 1 {
+		}
+		if head.y-p.y > 1 {
 			p.y++
-		} else if p.y-head.y > 1 {
+		}
+		if p.y-head.y > 1 {
 			p.y--
 		}
 	}
@@ -363,7 +366,7 @@ func Day9Part1(filepath string) any {
 				head.x++
 			}
 			// move tail according to head
-			tail.moveTail(head)
+			tail.moveNext(head)
 
 			// check tail position in visited map
 			// if not found, add to map and increment count
@@ -829,5 +832,114 @@ many positions does the tail of the rope visit at least once?
 func Day9Part2(filepath string) any {
 	var res int
 
+	// keep array of knots of size 10
+	// at each iteration,
+	// move head, then loop through knots and run moveNext on it
+	// for last knot, check visited
+
+	// init head and tail position to 0, 0
+	knots := make([]*pos, 10)
+	for i := range knots {
+		knots[i] = &pos{0, 0}
+	}
+
+	visited := map[string]bool{
+		"0,0": true,
+	}
+
+	// read file
+	readFile, _ := os.Open(filepath)
+
+	// read line
+	fileScanner := bufio.NewScanner(readFile)
+	fileScanner.Split(bufio.ScanLines)
+
+	// for each line
+	for fileScanner.Scan() {
+		line := fileScanner.Text()
+
+		// move head according to line
+		split := strings.Split(line, " ")
+		dir, steps := split[0], split[1]
+		// fmt.Println("===", dir, steps, "===")
+		n, _ := strconv.Atoi(steps)
+		head := knots[0]
+		for i := 1; i <= n; i++ {
+			switch dir {
+			case "U":
+				head.y++
+			case "D":
+				head.y--
+			case "L":
+				head.x--
+			case "R":
+				head.x++
+			}
+
+			// move next  according to new head
+			for i := 1; i < len(knots); i++ {
+				cur := knots[i]
+				prev := knots[i-1]
+				cur.moveNext(prev)
+
+				// check tail position in visited map
+				if i == len(knots)-1 {
+					// if not found, add to map and increment count
+					tailCoord := fmt.Sprintf("%d,%d", cur.x, cur.y)
+					if _, ok := visited[tailCoord]; !ok {
+						visited[tailCoord] = true
+						// fmt.Println("added", tailCoord)
+					}
+				}
+			} // end update knots
+			// printKnots(knots)
+		} // end single move
+	} // end set of moves in a line
+	res = len(visited)
+
 	return res
+}
+
+/*
+how to plot x,y to 2D array
+0,0 = maxx -minx / 2 , maxy-miny / 2
+minx,maxy.....maxx,maxy
+......................
+minx,miny.....max,xminy
+*/
+func printKnots(knots []*pos) {
+	// start with 50*50 grid with middle as starting
+	boardSize := 40
+	board := make([][]string, boardSize)
+	for i := range board {
+		board[i] = make([]string, boardSize)
+		for j := range board[i] {
+			board[i][j] = "."
+		}
+	}
+
+	startx := len(board) / 2
+	starty := len(board[0]) / 2
+	board[startx][starty] = "s"
+
+	for i, knot := range knots {
+		x, y := startx-knot.y, starty+knot.x
+		if i == 0 {
+			board[x][y] = "H"
+		} else if board[x][y] == "." || board[x][y] == "s" {
+			board[x][y] = strconv.Itoa(i)
+		}
+	}
+
+	if board[startx][starty] == "." {
+		board[startx][starty] = "s"
+	}
+
+	for i := range board {
+		row := ""
+		for j := range board[i] {
+			row += board[i][j]
+		}
+		fmt.Println(row)
+	}
 }
