@@ -1,4 +1,4 @@
-package main
+package aoc2022
 
 import (
 	"bufio"
