@@ -17,3 +17,11 @@ func TestDay2(t *testing.T) {
 	require.Equal(t, 8, aoc2023.Day2Part1("testdata/day2_example"))
 	require.Equal(t, 2286, aoc2023.Day2Part2("testdata/day2_example"))
 }
+
+func TestDay3(t *testing.T) {
+	require.Equal(t, 4361, aoc2023.Day3Part1("testdata/day3_example"))
+	require.Equal(t, 4361, aoc2023.Day3Part1("testdata/day3_example2"))
+	require.Equal(t, 467835, aoc2023.Day3Part2("testdata/day3_example"))
+	require.Equal(t, 467835, aoc2023.Day3Part2("testdata/day3_example2"))
+	require.Equal(t, 467835, aoc2023.Day3Part2("testdata/day3_example3"))
+}
