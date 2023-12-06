@@ -1,9 +1,7 @@
 package aoc2023
 
 import (
-	"bufio"
 	"fmt"
-	"os"
 	"strconv"
 )
 
@@ -56,13 +54,8 @@ of the part numbers in the engine schematic?
 func Day3Part1(filepath string) any {
 	result := 0
 
-	readFile, err := os.Open(filepath)
-	if err != nil {
-		fmt.Println(err)
-	}
-	defer readFile.Close()
-	fileScanner := bufio.NewScanner(readFile)
-	fileScanner.Split(bufio.ScanLines)
+	file, fileScanner := readFile(filepath)
+	defer file.Close()
 
 	schematic := [][]byte{}
 	// convert input to 2D array
@@ -158,12 +151,8 @@ What is the sum of all of the gear ratios in your engine schematic?
 // Day3Part2 ...
 func Day3Part2(filepath string) any {
 	result := 0
-	readFile, err := os.Open(filepath)
-	if err != nil {
-		fmt.Println(err)
-	}
-	fileScanner := bufio.NewScanner(readFile)
-	fileScanner.Split(bufio.ScanLines)
+	file, fileScanner := readFile(filepath)
+	defer file.Close()
 
 	schematic := [][]byte{}
 	// convert input to 2D array

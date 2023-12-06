@@ -2,9 +2,6 @@
 package aoc2023
 
 import (
-	"bufio"
-	"fmt"
-	"os"
 	"strconv"
 )
 
@@ -53,13 +50,8 @@ In this example, the calibration values of these four lines are 12, 38, 15, and
 // Day1Part1 ...
 func Day1Part1(filepath string) any {
 	result := 0
-	readFile, err := os.Open(filepath)
-	if err != nil {
-		fmt.Println(err)
-	}
-	fileScanner := bufio.NewScanner(readFile)
-
-	fileScanner.Split(bufio.ScanLines)
+	file, fileScanner := readFile(filepath)
+	defer file.Close()
 
 	// for each line
 	for fileScanner.Scan() {
@@ -123,13 +115,8 @@ func Day1Part2(filepath string) any {
 	}
 
 	result := 0
-	readFile, err := os.Open(filepath)
-	if err != nil {
-		fmt.Println(err)
-	}
-	fileScanner := bufio.NewScanner(readFile)
-
-	fileScanner.Split(bufio.ScanLines)
+	file, fileScanner := readFile(filepath)
+	defer file.Close()
 
 	// for each line
 	for fileScanner.Scan() {

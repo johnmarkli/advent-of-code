@@ -2,9 +2,6 @@
 package aoc2023
 
 import (
-	"bufio"
-	"fmt"
-	"os"
 	"strconv"
 	"strings"
 )
@@ -72,12 +69,8 @@ var (
 // Day2Part1 ...
 func Day2Part1(filepath string) any {
 	result := 0
-	readFile, err := os.Open(filepath)
-	if err != nil {
-		fmt.Println(err)
-	}
-	fileScanner := bufio.NewScanner(readFile)
-	fileScanner.Split(bufio.ScanLines)
+	file, fileScanner := readFile(filepath)
+	defer file.Close()
 
 	// for each line
 	for fileScanner.Scan() {
@@ -154,12 +147,8 @@ is the sum of the power of these sets?
 // Day2Part2 ...
 func Day2Part2(filepath string) any {
 	result := 0
-	readFile, err := os.Open(filepath)
-	if err != nil {
-		fmt.Println(err)
-	}
-	fileScanner := bufio.NewScanner(readFile)
-	fileScanner.Split(bufio.ScanLines)
+	file, fileScanner := readFile(filepath)
+	defer file.Close()
 
 	// for each line
 	for fileScanner.Scan() {
