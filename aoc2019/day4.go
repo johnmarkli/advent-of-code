@@ -1,13 +1,12 @@
-package main
+package aoc2019
 
 import (
-	"fmt"
 	"strconv"
 	"strings"
 )
 
-func day4() {
-	fmt.Println("Day 4")
+// Day4Part1 ...
+func Day4Part1(filepath string) any {
 	input := "272091-815432"
 	pRange := strings.Split(input, "-")
 	low, _ := strconv.Atoi(pRange[0])
@@ -46,5 +45,5 @@ func day4() {
 		}
 
 	}
-	fmt.Println("Day 4 Part 1: ", passCount)
+	return passCount
 }

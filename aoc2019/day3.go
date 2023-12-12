@@ -1,12 +1,10 @@
-package main
+package aoc2019
 
 import (
-	"bufio"
 	"fmt"
 	"log"
 	"os"
 	"strconv"
-	"strings"
 )
 
 type point struct {
@@ -14,27 +12,29 @@ type point struct {
 	y int
 }
 
-func day3() {
-	fmt.Println("Day 3")
-	file, err := os.Open("testdata/input3")
+// Day3Part1 ...
+func Day3Part1(filepath string) any {
+	result := 0
+	file, err := os.Open(filepath)
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer file.Close()
 
-	lines := make([]string, 2)
-	lineCount := 0
-	scanner := bufio.NewScanner(file)
-	for scanner.Scan() {
-		lines[lineCount] = string(scanner.Text())
-		lineCount++
-	}
-	line1Str := lines[0]
-	line2Str := lines[1]
-	line1 := strings.Split(line1Str, ",")
-	line2 := strings.Split(line2Str, ",")
-	result := closestIntersectionDist(line1, line2)
-	fmt.Println("Day 3 Part 1 Answer: ", result)
+	// lines := make([]string, 2)
+	// lineCount := 0
+	// scanner := bufio.NewScanner(file)
+	// for scanner.Scan() {
+	// 	lines[lineCount] = string(scanner.Text())
+	// 	lineCount++
+	// }
+	// line1Str := lines[0]
+	// line2Str := lines[1]
+	// line1 := strings.Split(line1Str, ",")
+	// line2 := strings.Split(line2Str, ",")
+	// TODO: fix ClosestIntersectionDist
+	// result := ClosestIntersectionDist(line1, line2)
+	return result
 }
 
 func intersectionLeastSteps(line1 []string, line2 []string) int {
@@ -60,16 +60,17 @@ func numSteps(lineSteps []string, intersection point) int {
 	return 0
 }
 
-func closestIntersectionDist(line1 []string, line2 []string) int {
+// ClosestIntersectionDist ...
+func ClosestIntersectionDist(line1 []string, line2 []string) int {
 	l1 := buildLine(line1)
 	l2 := buildLine(line2)
 	intersections := findIntersections(l1, l2)
 	var closestDist int
 	for i, p := range intersections {
 		if i == 0 {
-			closestDist = manhattanDistance(point{0, 0}, intersections[0])
+			closestDist = ManhattanDistance(point{0, 0}, intersections[0])
 		} else {
-			d := manhattanDistance(point{0, 0}, p)
+			d := ManhattanDistance(point{0, 0}, p)
 			if d < closestDist {
 				closestDist = d
 			}
@@ -135,6 +136,7 @@ func abs(x int) int {
 	return x
 }
 
-func manhattanDistance(point1, point2 point) int {
+// ManhattanDistance ...
+func ManhattanDistance(point1, point2 point) int {
 	return abs(point1.x-point2.x) + abs(point1.y-point2.y)
 }

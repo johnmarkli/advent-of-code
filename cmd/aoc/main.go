@@ -5,11 +5,18 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/johnmarkli/advent-of-code/aoc2019"
 	"github.com/johnmarkli/advent-of-code/aoc2022"
 	"github.com/johnmarkli/advent-of-code/aoc2023"
 )
 
 var parts = map[string][][]func(string) any{
+	"2019": {
+		{aoc2019.Day1Part1, aoc2019.Day1Part2},
+		{aoc2019.Day2Part1, aoc2019.Day2Part2},
+		{aoc2019.Day3Part1},
+		{aoc2019.Day4Part1},
+	},
 	"2022": {
 		{aoc2022.Day1Part1, aoc2022.Day1Part2},
 		{aoc2022.Day2Part1, aoc2022.Day2Part2},
@@ -27,6 +34,7 @@ var parts = map[string][][]func(string) any{
 		{aoc2023.Day3Part1, aoc2023.Day3Part2},
 		{aoc2023.Day4Part1, aoc2023.Day4Part2},
 		{aoc2023.Day5Part1, aoc2023.Day5Part2},
+		{aoc2023.Day6Part1, aoc2023.Day6Part2},
 	},
 }
 
@@ -35,12 +43,17 @@ func main() {
 		fmt.Printf("Year required\n")
 		os.Exit(1)
 	}
+	if len(os.Args) < 2 {
+		fmt.Printf("input directory required\n")
+		os.Exit(1)
+	}
 	year := os.Args[1]
+	inputDir := os.Args[2]
 	for i, fs := range parts[year] {
 		for j, f := range fs {
 			day := i + 1
 			part := j + 1
-			testData := fmt.Sprintf("testdata/day%d", day)
+			testData := fmt.Sprintf("%s/day%d", inputDir, day)
 			fmt.Println(fmt.Sprintf("Day %d - Part %d:", day, part), f(testData))
 		}
 	}

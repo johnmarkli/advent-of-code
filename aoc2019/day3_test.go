@@ -1,9 +1,10 @@
-package main
+package aoc2019_test
 
 import (
 	"strings"
 	"testing"
 
+	"github.com/johnmarkli/advent-of-code/aoc2019"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -12,14 +13,14 @@ func TestClosestIntersectionDist(t *testing.T) {
 	line2Str := "U62,R66,U55,R34,D71,R55,D58,R83"
 	line1 := strings.Split(line1Str, ",")
 	line2 := strings.Split(line2Str, ",")
-	d := closestIntersectionDist(line1, line2)
+	d := aoc2019.ClosestIntersectionDist(line1, line2)
 	assert.Equal(t, d, 159)
 
 	line1Str = "R98,U47,R26,D63,R33,U87,L62,D20,R33,U53,R51"
 	line2Str = "U98,R91,D20,R16,D67,R40,U7,R15,U6,R7"
 	line1 = strings.Split(line1Str, ",")
 	line2 = strings.Split(line2Str, ",")
-	d = closestIntersectionDist(line1, line2)
+	d = aoc2019.ClosestIntersectionDist(line1, line2)
 	assert.Equal(t, d, 135)
 }
 
@@ -34,7 +35,7 @@ func TestClosestIntersectionDist(t *testing.T) {
 // }
 
 func TestManhattanDistance(t *testing.T) {
-	d := manhattanDistance(point{0, 0}, point{6, 6})
+	d := aoc2019.ManhattanDistance(point{0, 0}, point{6, 6})
 	assert.Equal(t, d, 12)
 }
 

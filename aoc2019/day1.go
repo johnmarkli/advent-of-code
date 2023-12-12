@@ -1,22 +1,16 @@
-// Package main ...
-package main
+// Package aoc2019 ...
+package aoc2019
 
 import (
 	"bufio"
-	"fmt"
 	"log"
 	"os"
 	"strconv"
 )
 
-func day1() {
-	fmt.Println("Day 1")
-	day1Part1()
-	day1Part2()
-}
-
-func day1Part1() {
-	file, err := os.Open("testdata/input1")
+// Day1Part1 ...
+func Day1Part1(filepath string) any {
+	file, err := os.Open(filepath)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -31,11 +25,12 @@ func day1Part1() {
 		fuelSum += fuel
 	}
 
-	fmt.Println("Day 1 Part 1 Answer: ", fuelSum)
+	return fuelSum
 }
 
-func day1Part2() {
-	file, err := os.Open("testdata/input1")
+// Day1Part2 ...
+func Day1Part2(filepath string) any {
+	file, err := os.Open(filepath)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -49,7 +44,7 @@ func day1Part2() {
 		fuelSum += fuel
 	}
 
-	fmt.Println("Day 1 Part 2 Answer: ", fuelSum)
+	return fuelSum
 }
 
 func calcFuel(mass int) int {
