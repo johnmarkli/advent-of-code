@@ -4,6 +4,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"strconv"
 
 	"github.com/johnmarkli/advent-of-code/aoc2019"
 	"github.com/johnmarkli/advent-of-code/aoc2022"
@@ -36,6 +37,7 @@ var parts = map[string][][]func(string) any{
 		{aoc2023.Day5Part1, aoc2023.Day5Part2},
 		{aoc2023.Day6Part1, aoc2023.Day6Part2},
 		{aoc2023.Day7Part1, aoc2023.Day7Part2},
+		{aoc2023.Day8Part1, aoc2023.Day8Part2},
 	},
 }
 
@@ -49,13 +51,10 @@ func main() {
 		os.Exit(1)
 	}
 	year := os.Args[1]
-	inputDir := os.Args[2]
-	for i, fs := range parts[year] {
-		for j, f := range fs {
-			day := i + 1
-			part := j + 1
-			testData := fmt.Sprintf("%s/day%d", inputDir, day)
-			fmt.Println(fmt.Sprintf("Day %d - Part %d:", day, part), f(testData))
-		}
-	}
+	day, _ := strconv.Atoi(os.Args[2])
+	part, _ := strconv.Atoi(os.Args[3])
+	inputDir := os.Args[4]
+	inputData := fmt.Sprintf("%s/day%d", inputDir, day)
+	f := parts[year][day-1][part-1]
+	fmt.Println(fmt.Sprintf("Day %d - Part %d:", day, part), f(inputData))
 }
