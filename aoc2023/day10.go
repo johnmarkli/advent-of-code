@@ -53,47 +53,6 @@ type PipeMap struct {
 	enclosed [][]int
 }
 
-type coord struct {
-	x int
-	y int
-}
-
-func (c *coord) String() string {
-	return fmt.Sprintf("%d,%d", c.x, c.y)
-}
-
-func (c *coord) sameAs(c2 *coord) bool {
-	return c.x == c2.x && c.y == c2.y
-}
-
-func (c *coord) up() *coord {
-	return &coord{
-		x: c.x - 1,
-		y: c.y,
-	}
-}
-
-func (c *coord) down() *coord {
-	return &coord{
-		x: c.x + 1,
-		y: c.y,
-	}
-}
-
-func (c *coord) left() *coord {
-	return &coord{
-		x: c.x,
-		y: c.y - 1,
-	}
-}
-
-func (c *coord) right() *coord {
-	return &coord{
-		x: c.x,
-		y: c.y + 1,
-	}
-}
-
 const (
 	startPoint = 'S'
 	vertical   = '|'

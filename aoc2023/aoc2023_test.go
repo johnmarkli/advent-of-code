@@ -66,12 +66,20 @@ func TestDay9(t *testing.T) {
 }
 
 func TestDay10(t *testing.T) {
-	// require.Equal(t, 4, aoc2023.Day10Part1("testdata/day10_example"))
-	// require.Equal(t, 4, aoc2023.Day10Part1("testdata/day10_example2"))
-	// require.Equal(t, 8, aoc2023.Day10Part1("testdata/day10_example3"))
-	// require.Equal(t, 8, aoc2023.Day10Part1("testdata/day10_example4"))
-	//
+	require.Equal(t, 4, aoc2023.Day10Part1("testdata/day10_example"))
+	require.Equal(t, 4, aoc2023.Day10Part1("testdata/day10_example2"))
+	require.Equal(t, 8, aoc2023.Day10Part1("testdata/day10_example3"))
+	require.Equal(t, 8, aoc2023.Day10Part1("testdata/day10_example4"))
+
 	require.Equal(t, 4, aoc2023.Day10Part2("testdata/day10_example5"))
 	require.Equal(t, 8, aoc2023.Day10Part2("testdata/day10_example6"))
 	require.Equal(t, 10, aoc2023.Day10Part2("testdata/day10_example7"))
+}
+
+func TestDay11(t *testing.T) {
+	require.Equal(t, 374, aoc2023.Day11Part1("testdata/day11_example"))
+	require.Equal(t, 7, aoc2023.Day11Part1("testdata/day11_example2"))
+
+	require.Equal(t, 1030, aoc2023.Day11Part2Solve("testdata/day11_example", 10))
+	require.Equal(t, 8410, aoc2023.Day11Part2Solve("testdata/day11_example", 100))
 }
