@@ -107,30 +107,31 @@ func (gm *galaxyMap) expand(factor ...int) {
 		}
 	}
 
-	// get num of extra rows and cols
-	extraRows := 0
-	for _, count := range rowGalaxies {
-		if count == 0 {
-			// extraRows++
-			extraRows += fac
-		}
-	}
-	extraCols := 0
-	for _, count := range colGalaxies {
-		if count == 0 {
-			// extraCols++
-			extraCols += fac
-		}
-	}
-
-	// initialize expanded map with extra rows and cols
-	expandedMap := make([][]byte, len(gm.originalMap)+extraRows)
-	for i := range expandedMap {
-		expandedMap[i] = make([]byte, len(gm.originalMap[0])+extraCols)
-		for j := range expandedMap[0] {
-			expandedMap[i][j] = '*'
-		}
-	}
+	// Builds actual expanded map - commented out for part 2 since it's too big
+	// // get num of extra rows and cols
+	// extraRows := 0
+	// for _, count := range rowGalaxies {
+	// 	if count == 0 {
+	// 		// extraRows++
+	// 		extraRows += fac
+	// 	}
+	// }
+	// extraCols := 0
+	// for _, count := range colGalaxies {
+	// 	if count == 0 {
+	// 		// extraCols++
+	// 		extraCols += fac
+	// 	}
+	// }
+	//
+	// // initialize expanded map with extra rows and cols
+	// expandedMap := make([][]byte, len(gm.originalMap)+extraRows)
+	// for i := range expandedMap {
+	// 	expandedMap[i] = make([]byte, len(gm.originalMap[0])+extraCols)
+	// 	for j := range expandedMap[0] {
+	// 		expandedMap[i][j] = '*'
+	// 	}
+	// }
 
 	// loop originalMap
 	// if col found in colGalaxies, add another empty col
@@ -140,30 +141,30 @@ func (gm *galaxyMap) expand(factor ...int) {
 	i, j, rowOffset, colOffset := 0, 0, 0, 0
 	for i < len(gm.originalMap) {
 		if val, ok := rowGalaxies[i]; ok && val == 0 {
-			for k := range expandedMap[0] {
-				expandedMap[i+rowOffset][k] = '.'
-			}
+			// for k := range expandedMap[0] {
+			// 	expandedMap[i+rowOffset][k] = '.'
+			// }
 			l := 1
 			for l <= fac {
 				rowOffset++
-				for k := range expandedMap[0] {
-					expandedMap[i+rowOffset][k] = '.'
-				}
+				// for k := range expandedMap[0] {
+				// 	expandedMap[i+rowOffset][k] = '.'
+				// }
 				l++
 			}
 		} else {
 			for j < len(gm.originalMap[0]) {
 				if val, ok := colGalaxies[j]; ok && val == 0 {
-					expandedMap[i+rowOffset][j+colOffset] = '.'
+					// expandedMap[i+rowOffset][j+colOffset] = '.'
 					l := 1
 					for l <= fac {
 						colOffset++
-						expandedMap[i+rowOffset][j+colOffset] = '.'
+						// expandedMap[i+rowOffset][j+colOffset] = '.'
 						l++
 					}
 				} else {
 					el := gm.originalMap[i][j]
-					expandedMap[i+rowOffset][j+colOffset] = el
+					// expandedMap[i+rowOffset][j+colOffset] = el
 					if el == '#' {
 						c := &coord{x: i + rowOffset, y: j + colOffset}
 						galaxyCoords = append(galaxyCoords, c)
@@ -175,7 +176,7 @@ func (gm *galaxyMap) expand(factor ...int) {
 		j, colOffset = 0, 0
 		i++
 	}
-	gm.expandedMap = expandedMap
+	// gm.expandedMap = expandedMap
 	gm.galaxyCoords = galaxyCoords
 }
 

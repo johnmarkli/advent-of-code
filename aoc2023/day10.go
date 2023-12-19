@@ -18,7 +18,7 @@ func Day10Part1(filepath string) any {
 	// loop through pipemap from start following a connected path
 	// count steps until reach start again
 	steps := pipeMap.traverse()
-	pipeMap.showPipes()
+	// pipeMap.showPipes()
 	// result is count / 2
 	result = steps / 2
 
@@ -38,7 +38,7 @@ func Day10Part2(filepath string) any {
 
 	result = pipeMap.getTilesInLoop()
 	//
-	pipeMap.showPipeLoop()
+	// pipeMap.showPipeLoop()
 	// fmt.Println()
 	// pipeMap.showEnclosed()
 
