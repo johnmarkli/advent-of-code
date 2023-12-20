@@ -25,7 +25,7 @@ func Day12Part1(filepath string) any {
 
 	for _, sr := range sm {
 		arrs := sr.Arrangements()
-		fmt.Println(sr, arrs)
+		// fmt.Println(sr, arrs)
 		result += arrs
 	}
 
@@ -78,16 +78,16 @@ func (sr *SpringRow) Arrangements() int {
 }
 
 func (sr *SpringRow) springDFS(start int, origGroups []int, curRow []byte) int {
-	fmt.Println("\nstart, curRow, groups", start, string(curRow), origGroups)
+	// fmt.Println("\nstart, curRow, groups", start, string(curRow), origGroups)
 	var arrs int
 	// base case
 	if start > len(sr.Springs)-1 {
-		fmt.Println("hit end of springs with groups", string(curRow), origGroups)
+		// fmt.Println("hit end of springs with groups", string(curRow), origGroups)
 		if len(origGroups) == 0 || (len(origGroups) == 1 && origGroups[0] == 0) {
-			fmt.Println("no more groups, add to arrs", string(curRow), origGroups)
+			// fmt.Println("no more groups, add to arrs", string(curRow), origGroups)
 			return 1
 		}
-		fmt.Println("still have groups, don't add to arrs")
+		// fmt.Println("still have groups, don't add to arrs")
 		return 0
 	}
 
@@ -97,7 +97,7 @@ func (sr *SpringRow) springDFS(start int, origGroups []int, curRow []byte) int {
 	if len(groups) > 0 {
 		curGroup = groups[0]
 	}
-	fmt.Println("curGroup start", curGroup, groups)
+	// fmt.Println("curGroup start", curGroup, groups)
 
 	// iterative case
 
@@ -119,13 +119,17 @@ func (sr *SpringRow) springDFS(start int, origGroups []int, curRow []byte) int {
 		groupsWithDecr[0]--
 	}
 
+	var prevEl byte
+	if len(curRow) > 0 {
+		prevEl = curRow[len(curRow)-1]
+	}
 	// if el is ?
 	if el == '?' {
 		// choose
 		if curGroup == 0 {
 			choices['.'] = groupsWithoutFirst
-		} else {
-			choices['.'] = groups
+		} else if curGroup == -1 || (curGroup > 0 && prevEl != '#') {
+			choices['.'] = newGroups
 		}
 
 		if curGroup > 0 {
@@ -135,19 +139,19 @@ func (sr *SpringRow) springDFS(start int, origGroups []int, curRow []byte) int {
 		// take el
 		if el == '.' {
 			if curGroup == 0 {
-				choices['.'] = groupsWithoutFirst
-			} else {
-				choices['.'] = newGroups
+				choices[el] = groupsWithoutFirst
+			} else if curGroup == -1 || (curGroup > 0 && prevEl != '#') {
+				choices[el] = newGroups
 			}
 		} else if el == '#' && curGroup > 0 {
-			choices['#'] = groupsWithDecr
+			choices[el] = groupsWithDecr
 		}
 	}
 
 	if len(choices) > 0 {
 		for el, gs := range choices {
 			newRow := append(curRow, el)
-			fmt.Println("chose", string(el), "with groups", curGroup, gs, string(newRow))
+			// fmt.Println("chose", string(el), "with groups", curGroup, gs, string(newRow))
 			arrs += sr.springDFS(start+1, gs, newRow)
 		}
 	}

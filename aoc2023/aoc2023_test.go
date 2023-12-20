@@ -124,20 +124,20 @@ func TestDay12(t *testing.T) {
 			},
 			expect: 4,
 		},
-		// {
-		// 	sr: &aoc2023.SpringRow{
-		// 		Springs: []byte("?###????????"),
-		// 		Groups:  []int{3, 2, 1},
-		// 	},
-		// 	expect: 10,
-		// },
+		{
+			sr: &aoc2023.SpringRow{
+				Springs: []byte("?###????????"),
+				Groups:  []int{3, 2, 1},
+			},
+			expect: 10,
+		},
 	}
 
 	for _, tc := range tcs {
 		require.Equal(t, tc.expect, tc.sr.Arrangements())
 	}
 
-	// require.Equal(t, 21, aoc2023.Day12Part1("testdata/day12_example"))
+	require.Equal(t, 21, aoc2023.Day12Part1("testdata/day12_example"))
 
-	// require.Equal(t, 0, aoc2023.Day12Part2("testdata/day12_example"))
+	require.Equal(t, 0, aoc2023.Day12Part2("testdata/day12_example"))
 }
