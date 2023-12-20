@@ -139,5 +139,5 @@ func TestDay12(t *testing.T) {
 
 	require.Equal(t, 21, aoc2023.Day12Part1("testdata/day12_example"))
 
-	require.Equal(t, 0, aoc2023.Day12Part2("testdata/day12_example"))
+	require.Equal(t, 525152, aoc2023.Day12Part2("testdata/day12_example"))
 }
