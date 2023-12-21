@@ -143,7 +143,17 @@ func TestDay12(t *testing.T) {
 }
 
 func TestDay13(t *testing.T) {
-	require.Equal(t, 0, aoc2023.Day13Part1("testdata/day13"))
+	require.Equal(t, 405, aoc2023.Day13Part1("testdata/day13"))
+	require.Equal(t, 10, aoc2023.Day13Part1("testdata/day13-2"))
+	require.Equal(t, 600, aoc2023.Day13Part1("testdata/day13-3"))
+	require.Equal(t, 2101, aoc2023.Day13Part1("testdata/day13-4"))
+	require.Equal(t, 400, aoc2023.Day13Part1("testdata/day13-9"))
 
-	require.Equal(t, 0, aoc2023.Day13Part2("testdata/day13-2"))
+	require.Equal(t, 400, aoc2023.Day13Part2("testdata/day13"))
+	require.Equal(t, 5, aoc2023.Day13Part2("testdata/day13-5"))
+	require.Equal(t, 200, aoc2023.Day13Part2("testdata/day13-6"))
+	require.Equal(t, 5, aoc2023.Day13Part2("testdata/day13-7"))
+	require.Equal(t, 100, aoc2023.Day13Part2("testdata/day13-8"))
+	require.Equal(t, 1100, aoc2023.Day13Part2("testdata/day13-9"))
+	require.Equal(t, 800, aoc2023.Day13Part2("testdata/day13-10"))
 }
