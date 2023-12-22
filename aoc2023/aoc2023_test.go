@@ -163,3 +163,11 @@ func TestDay14(t *testing.T) {
 
 	require.Equal(t, 64, aoc2023.Day14Part2("testdata/day14"))
 }
+
+func TestDay15(t *testing.T) {
+	require.Equal(t, 52, aoc2023.InitStr("HASH").Hash())
+
+	require.Equal(t, 1320, aoc2023.Day15Part1("testdata/day15"))
+
+	require.Equal(t, 0, aoc2023.Day15Part2("testdata/day15"))
+}
