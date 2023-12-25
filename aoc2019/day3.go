@@ -7,9 +7,10 @@ import (
 	"strconv"
 )
 
-type point struct {
-	x int
-	y int
+// Point ...
+type Point struct {
+	X int
+	Y int
 }
 
 // Day3Part1 ...
@@ -44,7 +45,7 @@ func intersectionLeastSteps(line1 []string, line2 []string) int {
 	return 0
 }
 
-func numSteps(lineSteps []string, intersection point) int {
+func numSteps(lineSteps []string, intersection Point) int {
 	for _, move := range lineSteps {
 		dir := string(move[0])
 		_, _ = strconv.Atoi(string(move[1:]))
@@ -68,9 +69,9 @@ func ClosestIntersectionDist(line1 []string, line2 []string) int {
 	var closestDist int
 	for i, p := range intersections {
 		if i == 0 {
-			closestDist = ManhattanDistance(point{0, 0}, intersections[0])
+			closestDist = ManhattanDistance(Point{0, 0}, intersections[0])
 		} else {
-			d := ManhattanDistance(point{0, 0}, p)
+			d := ManhattanDistance(Point{0, 0}, p)
 			if d < closestDist {
 				closestDist = d
 			}
@@ -79,8 +80,8 @@ func ClosestIntersectionDist(line1 []string, line2 []string) int {
 	return closestDist
 }
 
-func buildLine(line []string) (result []point) {
-	currPos := point{0, 0}
+func buildLine(line []string) (result []Point) {
+	currPos := Point{0, 0}
 	result = append(result, currPos)
 	for _, move := range line {
 		dir := string(move[0])
@@ -89,25 +90,25 @@ func buildLine(line []string) (result []point) {
 		case "U":
 			// fmt.Println("Up ", steps)
 			for i := 0; i < steps; i++ {
-				currPos = point{currPos.x, currPos.y + 1}
+				currPos = Point{currPos.X, currPos.Y + 1}
 				result = append(result, currPos)
 			}
 		case "D":
 			// fmt.Println("Down ", steps)
 			for i := 0; i < steps; i++ {
-				currPos = point{currPos.x, currPos.y - 1}
+				currPos = Point{currPos.X, currPos.Y - 1}
 				result = append(result, currPos)
 			}
 		case "L":
 			// fmt.Println("Left ", steps)
 			for i := 0; i < steps; i++ {
-				currPos = point{currPos.x - 1, currPos.y}
+				currPos = Point{currPos.X - 1, currPos.Y}
 				result = append(result, currPos)
 			}
 		case "R":
 			// fmt.Println("Right ", steps)
 			for i := 0; i < steps; i++ {
-				currPos = point{currPos.x + 1, currPos.y}
+				currPos = Point{currPos.X + 1, currPos.Y}
 				result = append(result, currPos)
 			}
 		default:
@@ -117,10 +118,10 @@ func buildLine(line []string) (result []point) {
 	return result
 }
 
-func findIntersections(line1 []point, line2 []point) (result []point) {
+func findIntersections(line1 []Point, line2 []Point) (result []Point) {
 	for i := 0; i < len(line1); i++ {
 		for j := 0; j < len(line2); j++ {
-			if line1[i].x == line2[j].x && line1[i].y == line2[j].y {
+			if line1[i].X == line2[j].X && line1[i].Y == line2[j].Y {
 				// fmt.Println("found intersection", line1[i])
 				result = append(result, line1[i])
 			}
@@ -137,6 +138,6 @@ func abs(x int) int {
 }
 
 // ManhattanDistance ...
-func ManhattanDistance(point1, point2 point) int {
-	return abs(point1.x-point2.x) + abs(point1.y-point2.y)
+func ManhattanDistance(Point1, Point2 Point) int {
+	return abs(Point1.X-Point2.X) + abs(Point1.Y-Point2.Y)
 }

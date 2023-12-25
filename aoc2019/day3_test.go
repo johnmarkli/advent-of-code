@@ -35,7 +35,7 @@ func TestClosestIntersectionDist(t *testing.T) {
 // }
 
 func TestManhattanDistance(t *testing.T) {
-	d := aoc2019.ManhattanDistance(point{0, 0}, point{6, 6})
+	d := aoc2019.ManhattanDistance(aoc2019.Point{0, 0}, aoc2019.Point{6, 6})
 	assert.Equal(t, d, 12)
 }
 
