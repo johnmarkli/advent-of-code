@@ -14,6 +14,10 @@ func (c *coord) String() string {
 	return fmt.Sprintf("%d,%d", c.x, c.y)
 }
 
+func (c *coord) outOfBounds(maxX, maxY int) bool {
+	return c.x < 0 || c.x > maxX || c.y < 0 || c.y > maxY
+}
+
 func (c *coord) sameAs(c2 *coord) bool {
 	return c.x == c2.x && c.y == c2.y
 }

@@ -45,6 +45,7 @@ var parts = map[string][][]func(string) any{
 		{aoc2023.Day13Part1, aoc2023.Day13Part2},
 		{aoc2023.Day14Part1, aoc2023.Day14Part2},
 		{aoc2023.Day15Part1, aoc2023.Day15Part2},
+		{aoc2023.Day16Part1, aoc2023.Day16Part2},
 	},
 }
 
